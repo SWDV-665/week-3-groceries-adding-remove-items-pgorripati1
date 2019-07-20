@@ -8,7 +8,9 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  //Title for the App
   title= "Grocery List";
+  //Initial list of items for the App on start up
   items=[
     {
       name: "Milk",
@@ -30,6 +32,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
 
   }
+  //Action for Remove items functionality - removeItem()
   removeItem(item, index){
     const toast = this.toastCtrl.create({
       message: 'Removing Item number '+ index,
@@ -38,14 +41,19 @@ export class HomePage {
     toast.present();
     this.items.splice(index, 1);
   }
+  //Action for Add item functionality - addItem()
   addItem(){
     console.log("Adding Item");
    this.showAddItemPromt();
   }
+  //Promt controller method for Add item action - showAddItemPromt()
   showAddItemPromt(){
     const promt = this.alertCtrl.create({
+      //Title for Promt
       title: "Add item",
+      //Promt intro message
       message: "Please enter item details",
+      //Promt Input elements
       inputs:[
         {
           name:'name',
@@ -56,6 +64,7 @@ export class HomePage {
           placeholder:'Quantity'
         },
       ],
+      //Promt Button elements
       buttons:[
         {
           text:'Cancel',
